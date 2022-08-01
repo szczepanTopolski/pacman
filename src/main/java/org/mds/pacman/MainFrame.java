@@ -1,16 +1,23 @@
 package org.mds.pacman;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
-public class App extends JFrame {
+public class MainFrame extends JFrame {
+    private static final String TITLE = "PACMAN";
+
+    public MainFrame() throws HeadlessException {
+        super("Pacman");
+        JPanel panel = new Board();
+        add(panel);
+        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
     public static void main(String[] args) {
-        System.out.println("Dupa");
-        App app = new App();
-        Board board = new Board();
-        app.add(board);
-        app.setSize(800, 400);
-        board.setBackground(Color.BLACK);
-        app.setVisible(true);
+        EventQueue.invokeLater(MainFrame::new);
     }
 }
