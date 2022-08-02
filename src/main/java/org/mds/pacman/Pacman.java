@@ -14,7 +14,6 @@ public class Pacman {
         direction = Direction.RIGHT;
     }
 
-
     public void modifyCoordinatesBasedOnDirection() {
         switch (direction) {
             case UP -> moveUp();
@@ -27,25 +26,31 @@ public class Pacman {
     void moveLeft() {
         x.getAndAdd(-10);
         direction = Direction.LEFT;
+        direction.moveNextImages();
     }
 
     void moveRight() {
         x.getAndAdd(10);
         direction = Direction.RIGHT;
+        direction.moveNextImages();
     }
 
     void moveUp() {
         y.getAndAdd(-10);
         direction = Direction.UP;
+        direction.moveNextImages();
     }
 
     void moveDown() {
         y.getAndAdd(10);
         direction = Direction.DOWN;
+        direction.moveNextImages();
     }
+
     public Direction getDirection() {
         return direction;
     }
+
     public int getX() {
         return x.get();
     }
