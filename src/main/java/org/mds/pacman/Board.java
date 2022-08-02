@@ -35,7 +35,7 @@ public class Board extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(pacman.getDirection().getImage(), pacman.getX(), pacman.getY(), this);
+        g2d.drawImage(pacman.getDirection().getNext(), pacman.getX(), pacman.getY(), this);
         repaint(); // Cant be hare if we want change images
     }
 

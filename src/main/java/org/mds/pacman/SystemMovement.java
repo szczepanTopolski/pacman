@@ -13,7 +13,7 @@ public class SystemMovement implements Runnable {
     @Override
     public void run() {
         for (; ; ) { //Should be changed to while(isGameWon) or sth
-            try {   // HANDLE ALL CASES
+            try {
                 pacman.modifyCoordinatesBasedOnDirection();
                 Thread.sleep(25);
             } catch (InterruptedException e) {
