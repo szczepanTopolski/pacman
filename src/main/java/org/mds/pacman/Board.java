@@ -11,12 +11,14 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.mds.pacman.Constants.BOARD_HEIGHT;
+import static org.mds.pacman.Constants.BOARD_WIDTH;
+import static org.mds.pacman.Constants.INITIAL_POSITION;
 import static org.mds.pacman.StringUtils.joinStrings;
 import static org.mds.pacman.StringUtils.reduceStrings;
 
 public class Board extends JPanel {
-    private static final int BOARD_WIDTH = 800;
-    private static final int BOARD_HEIGHT = 400;
+
     private final Pacman pacman;
     private Cell[][] cells;
 
@@ -25,7 +27,7 @@ public class Board extends JPanel {
         setFocusable(true);
         setBackground(Color.BLACK);
         populateBoard();
-        pacman = new Pacman(new AtomicInteger(100), new AtomicInteger(100));
+        pacman = new Pacman(new AtomicInteger(INITIAL_POSITION), new AtomicInteger(INITIAL_POSITION));
         MoveValidator moveValidator = new MoveValidator(this);
         this.addKeyListener(new MovementKeyAdapter(pacman, moveValidator));
         new Thread(new SystemMovement(pacman, moveValidator)).start();
