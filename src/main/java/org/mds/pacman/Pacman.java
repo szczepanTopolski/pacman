@@ -43,7 +43,9 @@ public class Pacman {
         y.getAndAdd(10);
         direction = Direction.DOWN;
     }
-
+    public Direction getDirection() {
+        return direction;
+    }
     public int getX() {
         return x.get();
     }

@@ -1,12 +1,10 @@
 package org.mds.pacman;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,8 +35,7 @@ public class Board extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        Image image = new ImageIcon(Paths.pacman).getImage();
-        g2d.drawImage(image, pacman.getX(), pacman.getY(), this);
+        g2d.drawImage(pacman.getDirection().getImage(), pacman.getX(), pacman.getY(), this);
         repaint(); // Cant be hare if we want change images
     }
 

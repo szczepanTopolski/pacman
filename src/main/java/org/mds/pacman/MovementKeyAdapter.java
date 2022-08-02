@@ -17,11 +17,7 @@ public class MovementKeyAdapter extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_LEFT -> {
-                if (moveValidator.validateLeft(pacman)) {
-                    pacman.moveLeft();
-                }
-            }
+            case KeyEvent.VK_LEFT -> pacman.moveLeft();
             case KeyEvent.VK_RIGHT -> pacman.moveRight();
             case KeyEvent.VK_UP -> pacman.moveUp();
             case KeyEvent.VK_DOWN -> pacman.moveDown();

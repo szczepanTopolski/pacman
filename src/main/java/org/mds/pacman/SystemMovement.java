@@ -14,9 +14,7 @@ public class SystemMovement implements Runnable {
     public void run() {
         for (; ; ) { //Should be changed to while(isGameWon) or sth
             try {   // HANDLE ALL CASES
-                if (moveValidator.validateLeft(pacman)) {
-                    pacman.modifyCoordinatesBasedOnDirection();
-                }
+                pacman.modifyCoordinatesBasedOnDirection();
                 Thread.sleep(25);
             } catch (InterruptedException e) {
                 e.printStackTrace();
