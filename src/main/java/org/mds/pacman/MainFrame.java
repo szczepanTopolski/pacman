@@ -1,7 +1,6 @@
 package org.mds.pacman;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.EventQueue;
 import java.awt.HeadlessException;
 
@@ -9,9 +8,9 @@ public class MainFrame extends JFrame {
     private static final String TITLE = "PACMAN";
 
     public MainFrame() throws HeadlessException {
-        super("Pacman");
-        JPanel panel = new Board();
-        add(panel);
+        super(TITLE);
+        setTitle(TITLE);
+        add(new Board());
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

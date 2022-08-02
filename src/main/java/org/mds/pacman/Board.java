@@ -2,48 +2,33 @@ package org.mds.pacman;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class Board extends JPanel implements ActionListener {
+public class Board extends JPanel {
+    private final Pacman pacman;
 
-    public static int x;
-    public int y;
 
     public Board() {
         setPreferredSize(new Dimension(1000, 400));
         setFocusable(true);
-        x = 100;
-        y = 100;
-        this.addKeyListener(new CustomKeyListener());
+        setBackground(Color.BLACK);
+        pacman = new Pacman(new AtomicInteger(100), new AtomicInteger(100));
+        this.addKeyListener(new MovementKeyAdapter(pacman));
+        new Thread(new SystemMovement(pacman)).start();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-
-        Image image = new ImageIcon("src\\main\\resources\\img.png").getImage();
-        g2d.drawImage(image, x, y, this);
+        Image image = new ImageIcon(Paths.pacman).getImage();
+        g2d.drawImage(image, pacman.getX(), pacman.getY(), this);
+        repaint(); // Cant be hare if we want change images
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        repaint();
-    }
-
-    static class CustomKeyListener extends KeyAdapter{
-        @Override
-        public void keyPressed(KeyEvent e) {
-            super.keyPressed(e);
-            Board.x += 10;
-            System.out.println("Pressed: " + Board.x);
-        }
-    }
 }
